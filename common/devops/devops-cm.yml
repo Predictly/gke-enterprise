@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: devops-cm
+    configmanagement.gke.io/namespace-selector: team-devops-scope
+data:
+    key: value

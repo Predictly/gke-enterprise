@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: app-cm
+    configmanagement.gke.io/namespace-selector: team-a-scope
+data:
+    key: value
