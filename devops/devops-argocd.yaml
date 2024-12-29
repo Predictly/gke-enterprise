@@ -29,3 +29,17 @@ spec:
       applicationSet:
         replicas: 2
     auth: none
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: argocd-devops-argocd-cluster-admin
+  namespace: argocd
+subjects:
+- kind: ServiceAccount
+  name: ns-reconciler-argocd-devops-argocd-13
+  namespace: config-management-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
