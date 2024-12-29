@@ -1,15 +1,8 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: argocd
-  annotations:
-    configsync.gke.io/cluster-name-selector: prod-devops-runtime-0e05-europe-north1-prod-devops-runtime
----
 apiVersion: configsync.gke.io/v1beta1
-kind: RepoSync
+kind: RootSync
 metadata:
   name: devops
-  namespace: argocd
+  namespace: config-management-system
 spec:
   sourceType: git
   sourceFormat: unstructured
@@ -18,20 +11,6 @@ spec:
     branch: main
     dir: devops/
     auth: none
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: argocd-devops-cluster-admin
-  namespace: argocd
-subjects:
-- kind: ServiceAccount
-  name: ns-reconciler-argocd-devops-6
-  namespace: config-management-system
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: v1
 kind: ConfigMap

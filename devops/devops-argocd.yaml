@@ -1,8 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+  annotations:
+    configsync.gke.io/cluster-name-selector: prod-devops-runtime-0e05-europe-north1-prod-devops-runtime
+---
 apiVersion: configsync.gke.io/v1beta1
-kind: RepoSync
+kind: RootSync
 metadata:
   name: devops-argocd
-  namespace: argocd
+  namespace: config-management-system
 spec:
   sourceType: helm
   # Since this is for a namespace repository, the format is unstructured
@@ -12,7 +19,7 @@ spec:
     chart: argo-cd
     version: 7.7.11
     releaseName: argocd
-    # namespace: argocd
+    namespace: argocd
     values:
       redis-ha:
         enabled: true
@@ -29,17 +36,3 @@ spec:
       applicationSet:
         replicas: 2
     auth: none
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: argocd-devops-argocd-cluster-admin
-  namespace: argocd
-subjects:
-- kind: ServiceAccount
-  name: ns-reconciler-argocd-devops-argocd-13
-  namespace: config-management-system
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
