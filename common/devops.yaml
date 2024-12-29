@@ -3,6 +3,8 @@ kind: RootSync
 metadata:
   name: devops
   namespace: config-management-system
+  annotations:
+    configsync.gke.io/cluster-name-selector: prod-devops-runtime-0e05-europe-north1-prod-devops-runtime
 spec:
   sourceType: git
   sourceFormat: unstructured

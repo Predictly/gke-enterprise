@@ -10,6 +10,8 @@ kind: RootSync
 metadata:
   name: devops-argocd
   namespace: config-management-system
+  annotations:
+    configsync.gke.io/cluster-name-selector: prod-devops-runtime-0e05-europe-north1-prod-devops-runtime
 spec:
   sourceType: helm
   # Since this is for a namespace repository, the format is unstructured
