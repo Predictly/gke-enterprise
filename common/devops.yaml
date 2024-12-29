@@ -3,6 +3,8 @@ kind: RootSync
 metadata:
   name: devops
   namespace: config-management-system
+  annotations:
+    configmanagement.gke.io/namespace-selector: team-devops-scope
 spec:
   sourceType: git
   sourceFormat: unstructured
