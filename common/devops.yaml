@@ -1,0 +1,22 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: devops
+  namespace: config-management-system
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/Predictly/gke-enterprise
+    branch: main
+    dir: devops/
+    auth: none
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devops-cm
+  annotations:
+    configmanagement.gke.io/namespace-selector: team-devops-scope
+data:
+  key: value

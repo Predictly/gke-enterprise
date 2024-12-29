@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       # All namespaces managed by config sync
-      app.kubernetes.io/managed-by: configmanagement.gke.io
+      predictly.se/fleet: true
 ---
 apiVersion: configmanagement.gke.io/v1
 kind: NamespaceSelector
