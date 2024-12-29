@@ -9,7 +9,7 @@ spec:
   sourceFormat: unstructured
   helm:
     repo: https://argoproj.github.io/argo-helm
-    chart: argo/argo-cd
+    chart: argo-cd
     version: 7.7.11
     releaseName: argocd
     # namespace: argocd
