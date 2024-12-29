@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: argocd
   annotations:
-    configsync.gke.io/cluster-name-selector: prod-devops-runtime
+    configsync.gke.io/cluster-name-selector: prod-devops-runtime-0e05-europe-north1-prod-devops-runtime
 ---
 apiVersion: configsync.gke.io/v1beta1
 kind: RepoSync
