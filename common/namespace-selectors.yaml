@@ -32,7 +32,7 @@ spec:
 apiVersion: configmanagement.gke.io/v1
 kind: NamespaceSelector
 metadata:
-   name: common-scope
+   name: team-b-scope
 spec:
   mode: dynamic
   selector:
