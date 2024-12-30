@@ -18,6 +18,19 @@ spec:
     values:
       redis-ha:
         enabled: true
+        tolerations:
+          - effect: NoExecute
+            key: node.kubernetes.io/not-ready
+            operator: Exists
+            tolerationSeconds: 300
+          - effect: NoExecute
+            key: node.kubernetes.io/unreachable
+            operator: Exists
+            tolerationSeconds: 300
+          - effect: NoSchedule
+            key: kubernetes.io/arch
+            operator: Equal
+            value: amd64
       controller:
         replicas: 1
       server:
