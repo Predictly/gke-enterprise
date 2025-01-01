@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloserver
+  namespace: team-a-ns1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloserver
+  template:
+    metadata:
+      labels:
+        app: helloserver
+    spec:
+      containers:
+      - image: gcr.io/google-samples/istio/helloserver:v0.0.1
+        imagePullPolicy: Always
+        name: main
+        resources:
+          limits:
+            cpu: "100m"
+            memory: "164Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 5
