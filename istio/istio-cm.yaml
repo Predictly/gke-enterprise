@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-asm-managed-rapid
+  namespace: istio-system
+  annotations:
+    configmanagement.gke.io/namespace-selector: istio-scope
+data:
+  mesh: |-
+    # This section can be updated with user configuration settings from https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/
+    # Some options required for ASM to not be modified will be ignored
+    defaultConfig:
+      image:
+        imageType: distroless
+    outboundTrafficPolicy:
+      mode: REGISTRY_ONLY
