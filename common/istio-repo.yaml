@@ -1,4 +1,14 @@
 ---
+apiVersion: configmanagement.gke.io/v1
+kind: NamespaceSelector
+metadata:
+   name: istio-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      kubernetes.io/metadata.name: istio-system
+---
 apiVersion: configsync.gke.io/v1beta1
 kind: RepoSync
 metadata:

@@ -1,3 +1,4 @@
+---
 apiVersion: configmanagement.gke.io/v1
 kind: NamespaceSelector
 metadata:
@@ -8,43 +9,3 @@ spec:
     matchLabels:
       # All namespaces managed by config sync
       predictly.se/fleet: "true"
----
-apiVersion: configmanagement.gke.io/v1
-kind: NamespaceSelector
-metadata:
-   name: istio-scope
-spec:
-  mode: dynamic
-  selector:
-    matchLabels:
-      kubernetes.io/metadata.name: istio-system
----
-apiVersion: configmanagement.gke.io/v1
-kind: NamespaceSelector
-metadata:
-   name: team-devops-scope
-spec:
-  mode: dynamic
-  selector:
-    matchLabels:
-      fleet.gke.io/fleet-scope: team-devops
----
-apiVersion: configmanagement.gke.io/v1
-kind: NamespaceSelector
-metadata:
-   name: team-a-scope
-spec:
-  mode: dynamic
-  selector:
-    matchLabels:
-      fleet.gke.io/fleet-scope: team-a
----
-apiVersion: configmanagement.gke.io/v1
-kind: NamespaceSelector
-metadata:
-   name: team-b-scope
-spec:
-  mode: dynamic
-  selector:
-    matchLabels:
-      fleet.gke.io/fleet-scope: team-b

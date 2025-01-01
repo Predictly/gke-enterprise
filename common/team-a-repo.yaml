@@ -1,28 +1,39 @@
-# ---
-# apiVersion: configsync.gke.io/v1beta1
-# kind: RepoSync
-# metadata:
-#   name: team-a-repo
-#   namespace: team-a-ns1
-# spec:
-#   sourceType: git
-#   sourceFormat: unstructured
-#   git:
-#     repo: https://github.com/Predictly/gke-enterprise
-#     branch: main
-#     dir: undeploy/ #apps/team-a/
-#     auth: none
-# ---
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: RoleBinding
-# metadata:
-#   name: team-a-ns1-team-a-repo-cluster-admin
-#   namespace: team-a-ns1
-# subjects:
-# - kind: ServiceAccount
-#   name: ns-reconciler-team-a-ns1-team-a-repo-11
-#   namespace: config-management-system
-# roleRef:
-#   kind: ClusterRole
-#   name: cluster-admin
-#   apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: configmanagement.gke.io/v1
+kind: NamespaceSelector
+metadata:
+   name: team-a-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      fleet.gke.io/fleet-scope: team-a
+---
+apiVersion: configsync.gke.io/v1beta1
+kind: RepoSync
+metadata:
+  name: team-a-repo
+  annotations:
+    configmanagement.gke.io/namespace-selector: team-a-scope
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/Predictly/gke-enterprise
+    branch: main
+    dir: apps/team-a/
+    auth: none
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: team-a-ns1-team-a-repo-cluster-admin
+  namespace: team-a-ns1
+subjects:
+- kind: ServiceAccount
+  name: ns-reconciler-team-a-ns1-team-a-repo-11
+  namespace: config-management-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io

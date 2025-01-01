@@ -1,3 +1,14 @@
+---
+apiVersion: configmanagement.gke.io/v1
+kind: NamespaceSelector
+metadata:
+   name: team-b-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      fleet.gke.io/fleet-scope: team-b
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
