@@ -10,7 +10,7 @@ spec:
   git:
     repo: https://github.com/Predictly/gke-enterprise
     branch: main
-    dir: apps/team-a/
+    dir: undeploy/ #apps/team-a/
     auth: none
 ---
 apiVersion: rbac.authorization.k8s.io/v1
