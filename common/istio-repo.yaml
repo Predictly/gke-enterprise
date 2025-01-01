@@ -1,0 +1,29 @@
+apiVersion: configsync.gke.io/v1beta1
+kind: RepoSync
+metadata:
+  name: istio-repo
+  namespace: istio-system
+  annotations:
+    configmanagement.gke.io/namespace-selector: istio-scope
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/Predictly/gke-enterprise
+    branch: main
+    dir: istio/
+    auth: none
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: istio-system-istio-repo-cluster-admin
+  namespace: istio-system
+subjects:
+- kind: ServiceAccount
+  name: ns-reconciler-istio-system-istio-repo-10
+  namespace: config-management-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
