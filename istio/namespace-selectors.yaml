@@ -1,0 +1,9 @@
+apiVersion: configmanagement.gke.io/v1
+kind: NamespaceSelector
+metadata:
+   name: istio-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      kubernetes.io/metadata.name: istio-system
