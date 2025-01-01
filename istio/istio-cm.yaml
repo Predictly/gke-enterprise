@@ -2,8 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: istio-asm-managed-rapid
-  annotations:
-    configmanagement.gke.io/namespace-selector: istio-scope
+  namespace: istio-system
 data:
   mesh: |-
     # This section can be updated with user configuration settings from https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/
