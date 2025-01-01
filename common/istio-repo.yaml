@@ -2,7 +2,6 @@ apiVersion: configsync.gke.io/v1beta1
 kind: RepoSync
 metadata:
   name: istio-repo
-  namespace: istio-system
   annotations:
     configmanagement.gke.io/namespace-selector: istio-scope
 spec:
