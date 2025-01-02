@@ -14,3 +14,19 @@ spec:
     branch: main
     dir: config-connector/
     auth: none
+---
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: config-connector-crds
+  namespace: config-management-system
+  # annotations:
+  #   configsync.gke.io/cluster-name-selector: prod-app-runtime-6e3b-europe-north1-prod-app-runtime
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/GoogleCloudPlatform/k8s-config-connector
+    revision: v1.127.0
+    dir: crds/
+    auth: none
