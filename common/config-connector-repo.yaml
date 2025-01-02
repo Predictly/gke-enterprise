@@ -26,5 +26,5 @@ spec:
   git:
     repo: https://github.com/Predictly/gke-enterprise
     branch: main
-    dir: config-connector/crds/v1.127.0/
+    dir: config-connector/crds/v1_127_0/
     auth: none
