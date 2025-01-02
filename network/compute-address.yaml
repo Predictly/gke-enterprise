@@ -1,12 +1,12 @@
-apiVersion: compute.cnrm.cloud.google.com/v1beta1
-kind: ComputeAddress
-metadata:
-  name: ingress-gateway
-  namespace: ingress-gateway
-  annotations:
-    cnrm.cloud.google.com/project-id: prod-app-runtime-6e3b
-spec:
-  addressType: EXTERNAL
-  description: GKE prod-app-runtime gateway IP
-  location: global
-  networkTier: PREMIUM
+# apiVersion: compute.cnrm.cloud.google.com/v1beta1
+# kind: ComputeAddress
+# metadata:
+#   name: ingress-gateway
+#   namespace: ingress-gateway
+#   annotations:
+#     cnrm.cloud.google.com/project-id: prod-app-runtime-6e3b
+# spec:
+#   addressType: EXTERNAL
+#   description: GKE prod-app-runtime gateway IP
+#   location: global
+#   networkTier: PREMIUM
