@@ -15,7 +15,7 @@ metadata:
   name: config-connector
   namespace: config-management-system
   annotations:
-    configmanagement.gke.io/cluster-selector: onfig-connector-scope
+    configmanagement.gke.io/cluster-selector: config-connector-scope
 spec:
   sourceType: git
   sourceFormat: unstructured
