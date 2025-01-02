@@ -1,0 +1,26 @@
+---
+apiVersion: configmanagement.gke.io/v1
+kind: ClusterSelector
+metadata:
+   name: config-connector-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      predictly-se-config-connector: "true"
+---
+apiVersion: configsync.gke.io/v1beta1
+kind: RootSync
+metadata:
+  name: config-connector
+  namespace: config-management-system
+  annotations:
+    configmanagement.gke.io/cluster-selector: onfig-connector-scope
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/Predictly/gke-enterprise
+    branch: main
+    dir: config-connector/
+    auth: none
