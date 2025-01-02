@@ -28,23 +28,22 @@ spec:
           requests:
             cpu: 100m
             memory: 128Mi
-          # ports:
-          #   - name: status-port
-          #     port: 15021
-          #     protocol: TCP
-          #     containerPort: 15021
-          #   - name: http2
-          #     port: 80
-          #     protocol: HTTP
-          #     containerPort: 80
-          #   - name: https
-          #     port: 443
+        ports:
+          - name: status-port
+            protocol: TCP
+            containerPort: 15021
+          - name: http2
+            protocol: TCP
+            containerPort: 80
+          - name: https
+            protocol: TCP
+            containerPort: 443
         readinessProbe:
           httpGet:
             path: /healthz/ready
-            port: 15021
+            port: status-port
         livenessProbe:
           httpGet:
             path: /healthz/ready
-            port: 15021
+            port: status-port
       serviceAccountName: istio-ingressgateway
