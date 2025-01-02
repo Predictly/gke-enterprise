@@ -1,21 +1,11 @@
 ---
-apiVersion: configmanagement.gke.io/v1
-kind: ClusterSelector
-metadata:
-   name: config-connector-scope
-spec:
-  mode: dynamic
-  selector:
-    matchLabels:
-      predictly-se-config-connector: "true"
----
 apiVersion: configsync.gke.io/v1beta1
 kind: RootSync
 metadata:
   name: config-connector
   namespace: config-management-system
   annotations:
-    configmanagement.gke.io/cluster-selector: config-connector-scope
+    configsync.gke.io/cluster-name-selector: prod-app-runtime-6e3b-europe-north1-prod-app-runtime
 spec:
   sourceType: git
   sourceFormat: unstructured
