@@ -29,15 +29,15 @@ spec:
             cpu: 100m
             memory: 128Mi
         ports:
-          - name: status-port
-            protocol: TCP
-            containerPort: 15021
-          - name: http2
-            protocol: TCP
-            containerPort: 80
-          - name: https
-            protocol: TCP
-            containerPort: 443
+        - name: status-port
+          protocol: TCP
+          containerPort: 15021
+        - name: http2
+          protocol: TCP
+          containerPort: 80
+        - name: https
+          protocol: TCP
+          containerPort: 443
         readinessProbe:
           httpGet:
             path: /healthz/ready
