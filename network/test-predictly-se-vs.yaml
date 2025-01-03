@@ -16,7 +16,7 @@ spec:
     - destination:
         port:
           number: 8080
-        host: tracing-consumer.team-b-ns1
+        host: tracing-consumer.team-b-ns1.svc.cluster.local
   - match:
     - uri:
         prefix: /tracing
@@ -24,9 +24,9 @@ spec:
     - destination:
         port:
           number: 8080
-        host: tracing.team-b-ns1
+        host: tracing.team-b-ns1.svc.cluster.local
   - route:
     - destination:
         port:
           number: 80
-        host: hellosvc.team-a-ns1
+        host: hellosvc.team-a-ns1.svc.cluster.local
