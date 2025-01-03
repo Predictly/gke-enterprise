@@ -15,7 +15,7 @@ spec:
     spec:
       serviceAccountName: tracing-consumer
       containers:
-      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing:0.0.2
+      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing:0.0.3
         imagePullPolicy: Always
         name: tracing
         env:
