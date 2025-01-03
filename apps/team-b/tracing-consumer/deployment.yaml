@@ -17,6 +17,9 @@ spec:
       - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:latest
         imagePullPolicy: Always
         name: tracing-consumer
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: prod
         ports:
           - name: http
             containerPort: 8080

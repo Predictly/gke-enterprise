@@ -4,7 +4,7 @@ metadata:
   name: tracing
   namespace: team-b-ns1
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: tracing
@@ -17,6 +17,9 @@ spec:
       - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing:latest
         imagePullPolicy: Always
         name: tracing
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: prod
         ports:
           - name: http
             containerPort: 8080
