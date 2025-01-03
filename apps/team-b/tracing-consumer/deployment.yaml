@@ -13,8 +13,9 @@ spec:
       labels:
         app: tracing-consumer
     spec:
+      serviceAccountName: tracing-consumer
       containers:
-      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:0.0.1
+      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:0.0.2
         imagePullPolicy: Always
         name: tracing-consumer
         env:
@@ -37,6 +38,6 @@ spec:
             memory: "512Mi"
           requests:
             cpu: "100m"
-            memory: "256Mi"
+            memory: "512Mi"
       restartPolicy: Always
       terminationGracePeriodSeconds: 5
