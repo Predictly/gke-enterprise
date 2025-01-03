@@ -29,13 +29,13 @@ spec:
             cpu: 100m
             memory: 128Mi
         ports:
-        - name: status-port
+        - name: http-status-port
           protocol: TCP
           containerPort: 15021
         - name: http2
           protocol: TCP
           containerPort: 80
-        - name: https
+        - name: http-https
           protocol: TCP
           containerPort: 443
         readinessProbe:
