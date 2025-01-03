@@ -14,7 +14,7 @@ spec:
         app: tracing
     spec:
       containers:
-      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing:latest
+      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing:0.0.1
         imagePullPolicy: Always
         name: tracing
         env:

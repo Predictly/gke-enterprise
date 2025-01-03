@@ -14,7 +14,7 @@ spec:
         app: tracing-consumer
     spec:
       containers:
-      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:latest
+      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:0.0.1
         imagePullPolicy: Always
         name: tracing-consumer
         env:
