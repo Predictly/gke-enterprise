@@ -7,7 +7,7 @@ spec:
   hosts:
   - "test.predictly.se"
   gateways:
-  - ingress-gateway
+  - ingress-gateway.ingress-gateway
   http:
   - match:
     - uri:
