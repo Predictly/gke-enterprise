@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracing-consumer
+  namespace: team-b-ns1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tracing-consumer
+  template:
+    metadata:
+      labels:
+        app: tracing-consumer
+    spec:
+      containers:
+      - image: europe-docker.pkg.dev/prod-devops-runtime-0e05/prod-docker-repo/tracing-consumer:latest
+        imagePullPolicy: Always
+        name: tracing-consumer
+        ports:
+          - name: http
+            containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: http
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 5

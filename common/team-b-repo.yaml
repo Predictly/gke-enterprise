@@ -1,0 +1,39 @@
+---
+apiVersion: configmanagement.gke.io/v1
+kind: NamespaceSelector
+metadata:
+   name: team-b-scope
+spec:
+  mode: dynamic
+  selector:
+    matchLabels:
+      fleet.gke.io/fleet-scope: team-b
+---
+apiVersion: configsync.gke.io/v1beta1
+kind: RepoSync
+metadata:
+  name: team-b-repo
+  annotations:
+    configmanagement.gke.io/namespace-selector: team-b-scope
+spec:
+  sourceType: git
+  sourceFormat: unstructured
+  git:
+    repo: https://github.com/Predictly/gke-enterprise
+    branch: main
+    dir: apps/team-b/
+    auth: none
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: team-b-ns1-team-b-repo-cluster-admin
+  namespace: team-b-ns1
+subjects:
+- kind: ServiceAccount
+  name: ns-reconciler-team-b-ns1-team-b-repo-11
+  namespace: config-management-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io

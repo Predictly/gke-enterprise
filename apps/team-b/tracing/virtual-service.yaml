@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tracing
+  namespace: team-b-ns1
+spec:
+  hosts:
+  - "test.predictly.se"
+  gateways:
+  - ingress-gateway.ingress-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /tracing
+    route:
+    - destination:
+        port:
+          number: 8080
+        host: tracing
