@@ -25,10 +25,7 @@ spec:
         port:
           number: 8080
         host: tracing.team-b-ns1
-  - match:
-    - uri:
-        prefix: /
-    route:
+  - route:
     - destination:
         port:
           number: 80
